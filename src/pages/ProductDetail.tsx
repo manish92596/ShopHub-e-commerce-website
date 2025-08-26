@@ -1,3 +1,48 @@
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Star, ShoppingCart, Minus, Plus } from 'lucide-react';
+import { useProduct } from '../hooks/useProduct';
+import { useStore } from '../stores/useStore';
+import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { ErrorMessage } from '../components/ui/ErrorMessage';
+
+export const ProductDetail: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const productId = parseInt(id || '0', 10);
+  const { product, loading, error } = useProduct(productId);
+  const { addToCart } = useStore();
+  const [quantity, setQuantity] = useState(1);
+  const [isAdding, setIsAdding] = useState(false);
+
+  const handleQuantityChange = (newQuantity: number) => {
+    if (newQuantity >= 1 && newQuantity <= 5) {
+      setQuantity(newQuantity);
+    }
+  };
+
+  const handleAddToCart = async () => {
+    if (product) {
+      setIsAdding(true);
+      addToCart(product, quantity);
+      
+      // Add small delay for better UX
+      setTimeout(() => {
+        setIsAdding(false);
+      }, 500);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-96">
+        <LoadingSpinner size="large" />
+      </div>
+    );
+  }
+
+  if (error || !product) {
+    return <ErrorMessage message={error || 'Product not found'} />;
+  }
 
   return (
     <div className="max-w-6xl mx-auto">
