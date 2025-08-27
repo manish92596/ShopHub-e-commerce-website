@@ -112,26 +112,13 @@ src/
 
 ### Architecture Choices
 
-1. **Component Organization**: 
-   - Feature-based folder structure for scalability
-   - Separation of concerns (UI, business logic, data)
-   - Reusable component library approach
+## 🛠️ Architecture & Design Choices
 
-2. **State Management**: 
-   - Zustand chosen for simplicity and performance
-   - Persistent middleware for cart data
-   - Centralized store with clear action patterns
+- **Component Organization**: Feature-based folders with clear separation of UI, logic, and data. Built a small reusable component library for consistency.  
+- **State Management**: Used Zustand for simplicity, with persistence for cart data and a clean centralized store.  
+- **Data Fetching**: Custom hooks handle fetching with cache-first strategy, plus error + loading states.  
+- **Styling**: Tailwind CSS for speed, responsive-first design, and a consistent design system.  
 
-3. **Data Fetching**:
-   - Custom hooks for data fetching logic
-   - Cache-first approach for product details
-   - Error boundaries and loading states
-
-4. **Styling Approach**:
-   - Tailwind CSS for rapid development
-   - Component-scoped styling
-   - Responsive-first design
-   - Consistent design system
 
 ### UX/UI Decisions
 
@@ -143,21 +130,10 @@ src/
 
 ## ⚖️ Trade-offs & Considerations
 
-### Performance Trade-offs
-- **Bundle Size vs Features**: Included form validation and routing libraries for better UX
-- **Caching Strategy**: In-memory caching for session vs localStorage for persistence
-- **API Calls**: Balanced between data freshness and performance
+- **Performance**: Added routing + validation for smoother UX, with a simple caching strategy to balance speed and persistence.  
+- **Development**: Chose TypeScript for safety and Zustand for simplicity. Testing focused on core flows to ship MVP faster.  
+- **Technical Debt**: Error handling is coarse, accessibility is minimal, and client-side routing limits SEO.  
 
-### Development Trade-offs
-- **Type Safety**: Full TypeScript implementation adds development overhead but improves maintainability
-- **State Management**: Zustand over Redux for simplicity, sacrificing some debugging tools
-- **Testing**: Focused on core functionality over comprehensive test coverage for MVP
-
-### Technical Debt
-- **Error Boundaries**: Could be more granular for better error isolation
-- **Accessibility**: Basic implementation, could be enhanced with ARIA labels
-- **SEO**: Client-side routing limits SEO optimization
-- **Image Optimization**: Using external API images without optimization
 
 ## 🚀 Bonus Enhancements
 
