@@ -1,3 +1,6 @@
+![WhatsApp Image 2025-08-27 at 8 26 21 AM](https://github.com/user-attachments/assets/4ba0b62d-351f-4b92-97c5-ddd9e7ad79f6)
+
+
 # ShopHub - E-commerce Website
 
 A modern, lightweight e-commerce frontend built with React, TypeScript, and Tailwind CSS. Features a complete shopping experience with product browsing, cart management, and checkout flow.
